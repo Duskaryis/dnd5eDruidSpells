@@ -16,6 +16,7 @@
 	--druid-card-text-border: #548a3d;
 	--shadow-accent: 0px 3px 20px 10px var(--accent-color);
 	--shadow-inset: 0px 0px 5px var(--druid-card-text-border) inset;
+	--font: 'MedievalSharp', sans-serif;
 }
 
 body {
@@ -26,7 +27,7 @@ body {
 
 .text {
 	color: var(--druid-card-text);
-	font-family: 'MedievalSharp', sans-serif;
+	font-family: var(--font);
 }
 
 .header {
@@ -37,7 +38,7 @@ body {
 	margin: auto;
 	font-family: 'Love Light', sans-serif;
 	font-size: 1.25rem;
-	box-shadow: 0px 3px 20px 10px var(--accent-color);
+	box-shadow: var(--shadow-accent);
 	font-weight: 500;
 	align-items: center;
 }
@@ -61,7 +62,7 @@ body {
 	background-color: var(--druid-card-text-bg);
 	justify-content: center;
 	border-radius: 10px 10px 0px 0px;
-	box-shadow: 0px 0px 5px var(--druid-card-text-border) inset;
+	box-shadow: var(--shadow-inset);
 	height: 2rem;
 	align-items: center;
 	font-weight: bold;
@@ -91,14 +92,14 @@ body {
 	justify-content: center;
 	align-items: center;
 	background-color: var(--druid-card-text-bg);
-	box-shadow: 0px 0px 5px var(--druid-card-text-border) inset;
+	box-shadow: var(--shadow-inset);
 	margin: auto 0;
 	padding-top: 5px;
 }
 
 .spell-grid h4,
 .spell-grid p {
-	font-family: 'MedievalSharp', sans-serif;
+	font-family: var(--font);
 	margin: 0;
 }
 
@@ -109,19 +110,21 @@ body {
 .spell-grid p {
 	font-size: 0.875rem;
 }
-/* .spell-grid .time {
-	border: 1px red solid;
+
+.spell-description,
+.at-higher-levels {
+	background-color: var(--druid-card-text-bg);
+	box-shadow: var(--shadow-inset);
+	font-family: var(--font);
+	display: flex;
+	margin-top: 0.625rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+	font-size: 12px;
 }
 
-.spell-grid .range {
-	border: 1px red solid;
+.class-name {
+	font-family: 'Love Light', sans-serif;
+	font-size: 27px;
+	margin-top: 0.125rem;
 }
-
-.spell-grid .components {
-	border: 1px red solid;
-}
-
-.spell-grid .duration {
-	border: 1px red solid;
-}
- */
