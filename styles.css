@@ -14,6 +14,8 @@
 	--druid-card-outer: #f0f0f0;
 	--druid-card-text: #1a1a1a;
 	--druid-card-text-border: #548a3d;
+	--shadow-accent: 0px 3px 20px 10px var(--accent-color);
+	--shadow-inset: 0px 0px 5px var(--druid-card-text-border) inset;
 }
 
 body {
@@ -33,8 +35,8 @@ body {
 	justify-content: center;
 	width: 50%;
 	margin: auto;
-	font-family: 'Love Light', cursive;
-	font-size: 20px;
+	font-family: 'Love Light', sans-serif;
+	font-size: 1.25rem;
 	box-shadow: 0px 3px 20px 10px var(--accent-color);
 	font-weight: 500;
 	align-items: center;
@@ -46,7 +48,8 @@ body {
 
 .spell-container {
 	background-color: var(--druid-card-border);
-	width: 30%;
+	max-width: 20rem;
+	width: 100%;
 	padding: 13px;
 	border-radius: 10px;
 	margin-top: 30px;
@@ -59,15 +62,17 @@ body {
 	justify-content: center;
 	border-radius: 10px 10px 0px 0px;
 	box-shadow: 0px 0px 5px var(--druid-card-text-border) inset;
-	height: 30px;
+	height: 2rem;
 	align-items: center;
+	font-weight: bold;
+	letter-spacing: 0.2rem;
 }
 
 .spell-card span {
 	display: flex;
 	justify-content: center;
 	color: var(--druid-card-outer);
-	font-size: 10px;
+	font-size: 0.625rem;
 	margin-top: 1px;
 	letter-spacing: 0.5px;
 }
@@ -77,6 +82,18 @@ body {
 	grid-template-columns: 1fr 1fr;
 	gap: 4px;
 	margin-top: 1px;
+}
+
+.spell-grid .spell-stat {
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--druid-card-text-bg);
+	box-shadow: 0px 0px 5px var(--druid-card-text-border) inset;
+	margin: auto 0;
+	padding-top: 5px;
 }
 
 .spell-grid h4,
@@ -90,23 +107,8 @@ body {
 }
 
 .spell-grid p {
-	font-size: 14px;
+	font-size: 0.875rem;
 }
-
-.spell-grid .time,
-.spell-grid .range,
-.spell-grid .components,
-.spell-grid .duration {
-	border-radius: 5px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	background-color: var(--druid-card-text-bg);
-	box-shadow: 0px 0px 5px var(--druid-card-text-border) inset;
-	margin: auto 0;
-}
-
 /* .spell-grid .time {
 	border: 1px red solid;
 }

@@ -6,22 +6,25 @@
 const baseUrl = 'https://www.dnd5eapi.co';
 
 const getAllSpells = async () => {
-	const spellIndexes = await fetch(
-		baseUrl + '/api/2014/classes/druid/spells'
-	).then((response) => response.json());
+	try {
+		const spellIndexes = await fetch(
+			baseUrl + '/api/2014/classes/druid/spells'
+		).then((response) => response.json());
 
-	const first30 = spellIndexes.results.slice(30, 60);
+		const first30 = spellIndexes.results.slice(30, 60);
 
-	return Promise.all(
-		first30.map((spell) =>
-			fetch(baseUrl + spell.url)
-				.then((response) => response.json())
-				.catch((error) => console.error(error))
-		)
-	);
+		return Promise.all(
+			first30.map((spell) =>
+				fetch(baseUrl + spell.url).then((response) => response.json())
+			)
+		);
+	} catch (err) {
+		console.error('Error fetching spells: ', err);
+		return [];
+	}
 };
 
-console.log(getAllSpells());
+getAllSpells().then((data) => console.log(data));
 
 /* const renderCollection(spells) {
 	
