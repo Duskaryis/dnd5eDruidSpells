@@ -94,6 +94,18 @@ body {
 	transform: translateY(-2px);
 }
 
+.prepared-header,
+.spell-header {
+	background-color: var(--druid-card-text-bg);
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-radius: 10px;
+	box-shadow: 0px 1px 12px #fffff;
+}
+
 .spell-cards {
 	list-style: none;
 	padding: 0;
@@ -103,16 +115,13 @@ body {
 	margin: 10px;
 }
 
-.spell-container {
-	background-color: var(--druid-card-border);
+.spell-container,
+.prepared-container {
 	padding: 12px;
 	border-radius: 12px;
-	box-shadow: var(--shadow-inset);
 	transition: transform 0.2s;
-}
-
-.spell-container:hover {
-	transform: translateY(-3px);
+	max-width: 20rem;
+	width: 100%;
 }
 
 .spell-name {
@@ -196,6 +205,22 @@ button:hover {
 	transform: translateY(-2px);
 }
 
+#spells-list,
+#prepared-spells {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+	gap: 20px;
+	justify-items: center; /* center cards in each column */
+	margin: 10px auto;
+}
+
+@media (max-width: 1024px) {
+	#spells-list,
+	#prepared-spells {
+		grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+	}
+}
+
 @media (max-width: 768px) {
 	.spell-cards {
 		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -206,89 +231,9 @@ button:hover {
 	}
 }
 
-/* .spell-cards {
-	margin: 10px;
+@media (max-width: 600px) {
+	#spells-list,
+	#prepared-spells {
+		grid-template-columns: 1fr; /* 1 per row on phones */
+	}
 }
-
-.spell-container {
-	background-color: var(--druid-card-border);
-	max-width: 20rem;
-	width: 100%;
-	padding: 13px;
-	border-radius: 10px;
-	margin-top: 30px;
-}
-
-.spell-name {
-	display: flex;
-	color: var(--text-color);
-	background-color: var(--druid-card-text-bg);
-	justify-content: center;
-	border-radius: 10px 10px 0px 0px;
-	box-shadow: var(--shadow-inset);
-	height: 2rem;
-	align-items: center;
-	font-weight: bold;
-	letter-spacing: 0.2rem;
-}
-
-.spell-card span {
-	display: flex;
-	justify-content: center;
-	color: var(--druid-card-outer);
-	font-size: 0.625rem;
-	margin-top: 1px;
-	letter-spacing: 0.5px;
-}
-
-.spell-grid {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 4px;
-	margin-top: 1px;
-}
-
-.spell-grid .spell-stat {
-	border-radius: 5px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	background-color: var(--druid-card-text-bg);
-	box-shadow: var(--shadow-inset);
-	margin: auto 0;
-	padding-top: 5px;
-}
-
-.spell-grid h4,
-.spell-grid p {
-	font-family: var(--font);
-	margin: 0;
-}
-
-.spell-grid h4 {
-	letter-spacing: 2px;
-}
-
-.spell-grid p {
-	font-size: 0.875rem;
-}
-
-.spell-description,
-.at-higher-levels {
-	background-color: var(--druid-card-text-bg);
-	box-shadow: var(--shadow-inset);
-	font-family: var(--font);
-	display: flex;
-	margin-top: 0.625rem;
-	padding-left: 0.5rem;
-	padding-right: 0.5rem;
-	font-size: 12px;
-}
-
-.class-name {
-	font-family: 'Love Light', sans-serif;
-	font-size: 27px;
-	margin-top: 0.125rem;
-}
- */

@@ -5,8 +5,8 @@
 // at higher levels
 
 const baseUrl = 'https://www.dnd5eapi.co';
-
 let sortOrder = 'A-Z';
+let allSpells = [];
 
 const getAllSpells = async () => {
 	await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -29,22 +29,8 @@ const getAllSpells = async () => {
 	}
 };
 
-const loadPreparedSpells = () => {
-	const data = localStorage.getItem('preparedSpells');
-	return data ? JSON.parse(data) : [];
-};
-
-const renderSpells = (spells) => {
-	const spellsList = document.getElementById('spells-list');
-	const preparedE1 = document.getElementById('prepared-spells');
-
-	let preparedSpells = loadPreparedSpells();
-
-	const createSpellCard = (spell, isPrepared = false) => {
-		const container = document.createElement('div');
-		container.className = 'spell-container';
-
-		container.innerHTML = `
+const container = document.getElementById('spells-list');
+container.innerHTML = `
 	<div class="spell-name">
 		<h2 class="text">${spell.name}</h2>
 	</div>
@@ -85,28 +71,3 @@ const renderSpells = (spells) => {
 	<div class="class-name">Druid</div>
 	<button>${isPrepared ? 'Remove' : 'Prepare'}</button>
 `;
-
-		const button = container.querySelector('button');
-		button.addEventListener('click', () => {
-			if (isPrepared) {
-				preparedSpells = preparedSpells.filter((s) => s.name !== spell.name);
-			} else {
-				preparedSpells.push(spell);
-			}
-			savePreparedSpells(preparedSpells);
-			renderSpells(allSpells); // assuming allSpells holds the fetched spells
-		});
-		return container;
-	};
-
-	preparedE1 = '';
-	sortedPrepared.forEach((spell) => {
-		preparedE1.appendChild(createSpellCard(spell, true));
-	});
-
-	spellsList.innerHTML = '';
-	sortedSpells.forEach((spell) => {
-		spellsList.appendChild(createSpellCard(spell, false));
-	});
-	updateTotals(sortedSpells, sortedPrepared);
-};
