@@ -6,12 +6,14 @@
 const baseUrl = 'https://www.dnd5eapi.co';
 
 const getAllSpells = async () => {
+	await new Promise((resolve) => setTimeout(resolve, 2000));
+
 	try {
 		const spellIndexes = await fetch(
 			baseUrl + '/api/2014/classes/druid/spells'
 		).then((response) => response.json());
 
-		const first30 = spellIndexes.results.slice(30, 60);
+		const first30 = spellIndexes.results.slice(0, 40);
 
 		return Promise.all(
 			first30.map((spell) =>

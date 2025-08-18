@@ -43,6 +43,14 @@ body {
 	align-items: center;
 }
 
+.search-container {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	background-color: white;
+	margin-top: 28px;
+}
+
 .spell-cards {
 	margin: 10px;
 }

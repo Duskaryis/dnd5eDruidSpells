@@ -21,6 +21,44 @@
 			</div>
 		</header>
 
+		<!-- Search -->
+
+		<div class="search-container">
+			<label for="search">
+				<input
+					autocomplete="off"
+					id="search"
+					class="search-input"
+					type="text"
+					placeholder="Search..." />
+				<i class="fas fa-search"></i>
+			</label>
+			<div class="search-list">
+				<ul>
+					<li class="filter-link text">All Spells</li>
+					<li class="filter-link text">A-Z</li>
+					<li class="filter-link text">Z-A</li>
+					<li class="filter-link text">Refresh</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Prepared Spells -->
+
+		<section class="prepared-spells">
+			<div class="prepared-container">
+				<h2 class="prepared-header">Prepared Spells</h2>
+				<ul id="prepared-spells" class="spell-cards"></ul>
+			</div>
+		</section>
+
+		<!-- Spells list -->
+
+		<section class="spells-list">
+			<h2 class="text">All Spells</h2>
+			<ul id="spells-list" class="spell-cards"></ul>
+		</section>
+
 		<!-- Spell Cards -->
 
 		<section class="spell-list">
@@ -80,5 +118,6 @@
 			</div>
 		</section>
 		<script src="./JS/script.js"></script>
+		<script src="./JS/favorites.js"></script>
 	</body>
 </html>
