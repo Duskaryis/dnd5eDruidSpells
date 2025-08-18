@@ -21,27 +21,22 @@
 			</div>
 		</header>
 
-		<!-- Search -->
+		<!-- Totals and Sort -->
 
-		<div class="search-container">
-			<label for="search">
-				<input
-					autocomplete="off"
-					id="search"
-					class="search-input"
-					type="text"
-					placeholder="Search..." />
-				<i class="fas fa-search"></i>
-			</label>
-			<div class="search-list">
-				<ul>
-					<li class="filter-link text">All Spells</li>
-					<li class="filter-link text">A-Z</li>
-					<li class="filter-link text">Z-A</li>
-					<li class="filter-link text">Refresh</li>
-				</ul>
+		<section class="totals">
+			<div class="totals-container">
+				<p class="text">
+					Prepared Spells Total Levels: <span id="prepared-total">0</span>
+				</p>
+				<p class="text">
+					Remaining Spells Total Levels: <span id="spells-total">0</span>
+				</p>
 			</div>
-		</div>
+			<div class="sort-buttons">
+				<button id="sort-az">Sort A-Z</button>
+				<button id="sort-za">Sort Z-A</button>
+			</div>
+		</section>
 
 		<!-- Prepared Spells -->
 
@@ -59,9 +54,7 @@
 			<ul id="spells-list" class="spell-cards"></ul>
 		</section>
 
-		<!-- Spell Cards -->
-
-		<section class="spell-list">
+		<!-- <section class="spell-list">
 			<div class="spell-container">
 				<div class="spell-card">
 					<div class="spell-name">
@@ -116,7 +109,7 @@
 				</div>
 				<div class="class-name">Druid</div>
 			</div>
-		</section>
+		</section> -->
 		<script src="./JS/script.js"></script>
 		<script src="./JS/favorites.js"></script>
 	</body>

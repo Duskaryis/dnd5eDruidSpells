@@ -21,8 +21,11 @@
 
 body {
 	background-color: var(--bg-color);
+	font-family: var(--font);
+	padding: 0;
+	color: var(--druid-card-text);
 	max-width: 1440px;
-	max-height: 900px;
+	margin: auto;
 }
 
 .text {
@@ -34,24 +37,176 @@ body {
 	background-color: var(--primary-color);
 	display: flex;
 	justify-content: center;
-	width: 50%;
-	margin: auto;
+	padding: 15px;
+	box-shadow: var(--shadow-accent);
 	font-family: 'Love Light', sans-serif;
 	font-size: 1.25rem;
-	box-shadow: var(--shadow-accent);
-	font-weight: 500;
+	font-weight: 600;
 	align-items: center;
+	color: var(--text-color-white);
+	width: 50%;
+	margin: auto;
+	border-radius: 10px 10px 0 0;
 }
 
-.search-container {
+.totals {
+	text-align: center;
+	margin: auto;
+	margin-top: 30px;
+	background-color: var(--druid-card-header);
+	width: 50%;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	background-color: white;
-	margin-top: 28px;
+	border-radius: 0 0 10px 10px;
+}
+
+.totals-container p {
+	margin: 5px 0;
+	font-weight: bold;
+	font-size: 1rem;
+}
+
+.sort-buttons {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 10px;
+	flex-wrap: wrap;
+}
+
+.sort-buttons button {
+	background-color: var(--secondary-btn);
+	color: var(--text-color-white);
+	border: none;
+	padding: 8px 15px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-family: var(--font);
+	font-weight: bold;
+	box-shadow: var(--shadow-inset);
+	transition: all 0.2s ease-in-out;
+	width: 25%;
+}
+
+.sort-buttons button:hover {
+	background-color: var(--primary-btn);
+	transform: translateY(-2px);
 }
 
 .spell-cards {
+	list-style: none;
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 20px;
+	margin: 10px;
+}
+
+.spell-container {
+	background-color: var(--druid-card-border);
+	padding: 12px;
+	border-radius: 12px;
+	box-shadow: var(--shadow-inset);
+	transition: transform 0.2s;
+}
+
+.spell-container:hover {
+	transform: translateY(-3px);
+}
+
+.spell-name {
+	display: flex;
+	color: var(--text-color);
+	background-color: var(--druid-card-text-bg);
+	justify-content: center;
+	border-radius: 10px 10px 0 0;
+	box-shadow: var(--shadow-inset);
+	height: 2.5rem;
+	align-items: center;
+	font-weight: bold;
+	letter-spacing: 0.15rem;
+	margin-bottom: 5px;
+	text-align: center;
+	padding: 0 5px;
+}
+
+.spell-container span {
+	display: flex;
+	justify-content: center;
+	color: var(--druid-card-outer);
+	font-size: 0.8rem;
+	margin-bottom: 8px;
+}
+
+.spell-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 5px;
+	margin-bottom: 8px;
+}
+
+.spell-stat {
+	background-color: var(--druid-card-text-bg);
+	padding: 5px;
+	border-radius: 5px;
+	text-align: center;
+	box-shadow: var(--shadow-inset);
+}
+
+.spell-stat h4 {
+	margin: 0;
+	font-size: 0.85rem;
+	letter-spacing: 1px;
+}
+
+.spell-stat p {
+	margin: 0;
+	font-size: 0.75rem;
+}
+
+.spell-description,
+.at-higher-levels {
+	background-color: var(--druid-card-text-bg);
+	box-shadow: var(--shadow-inset);
+	font-family: var(--font);
+	display: block;
+	margin-top: 5px;
+	padding: 5px;
+	font-size: 0.8rem;
+	border-radius: 5px;
+}
+
+button {
+	background-color: var(--primary-btn);
+	color: var(--text-color-white);
+	border: none;
+	padding: 6px 12px;
+	margin-top: 8px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-family: var(--font);
+	font-weight: bold;
+	width: 100%;
+	transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+	background-color: var(--secondary-btn);
+	transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+	.spell-cards {
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	}
+	.sort-buttons button {
+		padding: 6px 10px;
+		font-size: 0.9rem;
+	}
+}
+
+/* .spell-cards {
 	margin: 10px;
 }
 
@@ -136,3 +291,4 @@ body {
 	font-size: 27px;
 	margin-top: 0.125rem;
 }
+ */
