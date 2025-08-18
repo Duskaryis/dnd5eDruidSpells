@@ -29,6 +29,8 @@ const getAllSpells = async () => {
 	}
 };
 
+console.log(getAllSpells());
+
 const container = document.getElementById('spells-list');
 container.innerHTML = `
 	<div class="spell-name">

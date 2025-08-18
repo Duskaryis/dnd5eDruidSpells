@@ -26,6 +26,7 @@ body {
 	color: var(--druid-card-text);
 	max-width: 1440px;
 	margin: auto;
+	margin-top: 15px;
 }
 
 .text {
@@ -43,10 +44,16 @@ body {
 	font-size: 1.25rem;
 	font-weight: 600;
 	align-items: center;
-	color: var(--text-color-white);
+	color: var(--druid-card-text);
 	width: 50%;
 	margin: auto;
 	border-radius: 10px 10px 0 0;
+}
+
+.header i {
+	color: var(--druid-card-text);
+	font-style: italic;
+	font-size: 35px;
 }
 
 .totals {
@@ -54,7 +61,7 @@ body {
 	margin: auto;
 	margin-top: 30px;
 	background-color: var(--druid-card-header);
-	width: 50%;
+	width: 30%;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
@@ -87,6 +94,7 @@ body {
 	box-shadow: var(--shadow-inset);
 	transition: all 0.2s ease-in-out;
 	width: 25%;
+	margin-bottom: 5px;
 }
 
 .sort-buttons button:hover {
@@ -103,7 +111,12 @@ body {
 	padding-top: 5px;
 	padding-bottom: 5px;
 	border-radius: 10px;
-	box-shadow: 0px 1px 12px #fffff;
+	box-shadow: 0px 1px 12px #ffffff;
+}
+
+.prepared-container .prepared-header i {
+	color: var(--druid-card-header);
+	padding: 0 18px;
 }
 
 .spell-cards {
