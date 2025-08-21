@@ -221,16 +221,16 @@ button:hover {
 #spells-list,
 #prepared-spells {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+	grid-template-columns: repeat(3, 1fr);
 	gap: 20px;
-	justify-items: center; /* center cards in each column */
+	justify-items: center;
 	margin: 10px auto;
 }
 
 @media (max-width: 1024px) {
 	#spells-list,
 	#prepared-spells {
-		grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
@@ -248,5 +248,13 @@ button:hover {
 	#spells-list,
 	#prepared-spells {
 		grid-template-columns: 1fr; /* 1 per row on phones */
+	}
+}
+
+@media (max-width: 400px) {
+	.sort-buttons button {
+		display: flex;
+		justify-content: center;
+		padding: 5px 30px;
 	}
 }

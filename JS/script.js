@@ -16,11 +16,16 @@ const getAllSpells = async () => {
 			baseUrl + '/api/2014/classes/druid/spells'
 		).then((response) => response.json());
 
-		const first40 = spellIndexes.results.slice(0, 40);
+		const first40 = spellIndexes.results.slice(40);
 
 		return Promise.all(
 			first40.map((spell) =>
-				fetch(baseUrl + spell.url).then((response) => response.json())
+				fetch(baseUrl + spell.url)
+					.then((response) => response.json())
+					.then((data) => {
+						allSpells.push(data);
+						createCard(data);
+					})
 			)
 		);
 	} catch (err) {
@@ -29,10 +34,14 @@ const getAllSpells = async () => {
 	}
 };
 
-console.log(getAllSpells());
+getAllSpells();
 
-const container = document.getElementById('spells-list');
-container.innerHTML = `
+const createCard = (spell) => {
+	const container = document.getElementById('spells-list');
+	const card = document.createElement('div');
+	card.classList.add('spell-card');
+
+	card.innerHTML = `
 	<div class="spell-name">
 		<h2 class="text">${spell.name}</h2>
 	</div>
@@ -40,19 +49,19 @@ container.innerHTML = `
 
 	<div class="spell-grid">
 		<div class="spell-stat">
-			<h4>CASTING TIME</h4>
+			<h3>CASTING TIME</h3>
 			<p class="text">${spell.casting_time}</p>
 		</div>
 		<div class="spell-stat">
-			<h4>RANGE</h4>
+			<h3>RANGE</h3>
 			<p class="text">${spell.range}</p>
 		</div>
 		<div class="spell-stat">
-			<h4>COMPONENTS</h4>
+			<h3>COMPONENTS</h3>
 			<p class="text">${spell.components.join(', ')}</p>
 		</div>
 		<div class="spell-stat">
-			<h4>DURATION</h4>
+			<h3>DURATION</h3>
 			<p class="text">${spell.duration}</p>
 		</div>
 	</div>
@@ -71,5 +80,9 @@ container.innerHTML = `
 	}
 
 	<div class="class-name">Druid</div>
-	<button>${isPrepared ? 'Remove' : 'Prepare'}</button>
+	
 `;
+	container.appendChild(card);
+};
+
+/* <button>${isPrepared ? 'Remove' : 'Prepare'}</button> */
