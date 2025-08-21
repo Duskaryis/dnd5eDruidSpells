@@ -39,31 +39,31 @@ getAllSpells();
 const createCard = (spell) => {
 	const container = document.getElementById('spells-list');
 	const card = document.createElement('div');
-	card.classList.add('spell-card');
+	card.classList.add('spell-container');
 
 	card.innerHTML = `
-	<div class="spell-name">
-		<h2 class="text">${spell.name}</h2>
-	</div>
-	<span class="text">${spell.level}-level ${spell.school.name}</span>
+		<div class="spell-name">
+			<h2 class="text">${spell.name}</h2>
+		</div>
+		<span class="text">${spell.level}-level ${spell.school.name}</span>
 
-	<div class="spell-grid">
-		<div class="spell-stat">
-			<h3>CASTING TIME</h3>
-			<p class="text">${spell.casting_time}</p>
-		</div>
-		<div class="spell-stat">
-			<h3>RANGE</h3>
-			<p class="text">${spell.range}</p>
-		</div>
-		<div class="spell-stat">
-			<h3>COMPONENTS</h3>
-			<p class="text">${spell.components.join(', ')}</p>
-		</div>
-		<div class="spell-stat">
-			<h3>DURATION</h3>
-			<p class="text">${spell.duration}</p>
-		</div>
+		<div class="spell-grid">
+			<div class="spell-stat">
+				<h3>CASTING TIME</h3>
+				<p class="text">${spell.casting_time}</p>
+			</div>
+			<div class="spell-stat">
+				<h3>RANGE</h3>
+				<p class="text">${spell.range}</p>
+			</div>
+			<div class="spell-stat">
+				<h3>COMPONENTS</h3>
+				<p class="text">${spell.components.join(', ')}</p>
+			</div>
+			<div class="spell-stat">
+				<h3>DURATION</h3>
+				<p class="text">${spell.duration}</p>
+			</div>
 	</div>
 
 	<div class="spell-description">
@@ -80,9 +80,9 @@ const createCard = (spell) => {
 	}
 
 	<div class="class-name">Druid</div>
-	
+	<button>Prepared</button>
 `;
 	container.appendChild(card);
 };
 
-/* <button>${isPrepared ? 'Remove' : 'Prepare'}</button> */
+/* ${isPrepared ? 'Remove' : 'Prepare'} */

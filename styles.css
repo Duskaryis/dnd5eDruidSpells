@@ -128,13 +128,22 @@ body {
 	margin: 10px;
 }
 
-.spell-container,
+.spell-list-container,
 .prepared-container {
 	padding: 12px;
 	border-radius: 12px;
 	transition: transform 0.2s;
 	max-width: 20rem;
 	width: 100%;
+	margin: auto;
+}
+
+.spell-container {
+	background-color: var(--druid-card-border);
+	display: flex;
+	flex-direction: column;
+	padding: 9px 8px;
+	border-radius: 10px;
 }
 
 .spell-name {
