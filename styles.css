@@ -22,11 +22,10 @@
 body {
 	background-color: var(--bg-color);
 	font-family: var(--font);
-	padding: 0;
+	padding: 0 20px;
 	color: var(--druid-card-text);
 	max-width: 1440px;
-	margin: auto;
-	margin-top: 15px;
+	margin: 15px auto;
 }
 
 .text {

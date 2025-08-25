@@ -36,6 +36,20 @@ const getAllSpells = async () => {
 
 getAllSpells();
 
+const buttonAZ = document.getElementById('sort-az');
+const buttonZA = document.getElementById('sort-za');
+
+const sortAZ = () => {
+	allSpells.sort((a, b) => a.name.localeCompare(b.name));
+	renderSpells();
+};
+
+const sortZA = () => {
+	allSpells.sort((a, b) => b.name.localeCompare(a.name));
+	renderSpells();
+};
+const isPrepared = () => {};
+
 const createCard = (spell) => {
 	const container = document.getElementById('spells-list');
 	const card = document.createElement('div');
@@ -80,9 +94,18 @@ const createCard = (spell) => {
 	}
 
 	<div class="class-name">Druid</div>
-	<button>Prepared</button>
+	<button>${isPrepared ? 'Remove' : 'Prepare'}</button>
 `;
 	container.appendChild(card);
 };
 
-/* ${isPrepared ? 'Remove' : 'Prepare'} */
+const renderSpells = () => {
+	const container = document.getElementById('spells-list');
+	container.innerHTML = '';
+	allSpells.forEach((spell) => createCard(spell));
+};
+
+buttonAZ.addEventListener('click', sortAZ);
+buttonZA.addEventListener('click', sortZA);
+
+/*  */
