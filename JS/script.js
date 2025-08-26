@@ -9,25 +9,20 @@ let sortOrder = 'A-Z';
 let allSpells = [];
 
 const getAllSpells = async () => {
-	await new Promise((resolve) => setTimeout(resolve, 1000));
-
 	try {
 		const spellIndexes = await fetch(
 			baseUrl + '/api/2014/classes/druid/spells'
 		).then((response) => response.json());
 
-		const first40 = spellIndexes.results.slice(40);
+		const first40 = spellIndexes.results.slice(0, 40);
 
-		return Promise.all(
-			first40.map((spell) =>
-				fetch(baseUrl + spell.url)
-					.then((response) => response.json())
-					.then((data) => {
-						allSpells.push(data);
-						createCard(data);
-					})
-			)
-		);
+		for (let i = 0; i < first40.length; i++) {
+			await new Promise((resolve) => setTimeout(resolve, 1));
+			const response = await fetch(baseUrl + first40[i].url);
+			const data = await response.json();
+			allSpells.push(data);
+		}
+		renderSpells();
 	} catch (err) {
 		console.error('Error fetching spells: ', err);
 		return [];
@@ -48,7 +43,9 @@ const sortZA = () => {
 	allSpells.sort((a, b) => b.name.localeCompare(a.name));
 	renderSpells();
 };
-const isPrepared = () => {};
+const isPrepared = (spell) => {
+	return false;
+};
 
 const createCard = (spell) => {
 	const container = document.getElementById('spells-list');
@@ -107,5 +104,3 @@ const renderSpells = () => {
 
 buttonAZ.addEventListener('click', sortAZ);
 buttonZA.addEventListener('click', sortZA);
-
-/*  */

@@ -13,6 +13,7 @@
 	--druid-card-header: #6ea755;
 	--druid-card-outer: #f0f0f0;
 	--druid-card-text: #1a1a1a;
+	--druid-card-hover: #c0bbab;
 	--druid-card-text-border: #548a3d;
 	--shadow-accent: 0px 3px 20px 10px var(--accent-color);
 	--shadow-inset: 0px 0px 5px var(--druid-card-text-border) inset;
@@ -20,7 +21,7 @@
 }
 
 body {
-	background-color: var(--bg-color);
+	background-color: var(--druid-card-text-bg);
 	font-family: var(--font);
 	padding: 0 20px;
 	color: var(--druid-card-text);
@@ -110,7 +111,7 @@ body {
 	padding-top: 5px;
 	padding-bottom: 5px;
 	border-radius: 10px;
-	box-shadow: 0px 1px 12px #ffffff;
+	box-shadow: 0px 1px 12px var(--druid-card-hover);
 }
 
 .prepared-container .prepared-header i {
@@ -143,6 +144,11 @@ body {
 	flex-direction: column;
 	padding: 9px 8px;
 	border-radius: 10px;
+}
+
+.spell-container:hover {
+	transform: translateY(-10px) translateX(10px);
+	box-shadow: -18px 13px var(--druid-card-hover);
 }
 
 .spell-name {
