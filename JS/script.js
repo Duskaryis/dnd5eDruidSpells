@@ -5,8 +5,8 @@
 // at higher levels
 
 const baseUrl = 'https://www.dnd5eapi.co';
-let sortOrder = 'A-Z';
 let allSpells = [];
+let preparedSpells = [];
 
 const getAllSpells = async () => {
 	try {
@@ -34,21 +34,24 @@ getAllSpells();
 const buttonAZ = document.getElementById('sort-az');
 const buttonZA = document.getElementById('sort-za');
 
-const sortAZ = () => {
-	allSpells.sort((a, b) => a.name.localeCompare(b.name));
+const sortSpells = (order = 'A-Z') => {
+	if (order === 'A-Z') {
+		allSpells.sort((a, b) => a.name.localeCompare(b.name));
+	} else if (order === 'Z-A') {
+		allSpells.sort((a, b) => b.name.localeCompare(a.name));
+	}
 	renderSpells();
+	renderPreparedSpells();
 };
 
-const sortZA = () => {
-	allSpells.sort((a, b) => b.name.localeCompare(a.name));
-	renderSpells();
-};
+buttonAZ.addEventListener('click', () => sortSpells('A-Z'));
+buttonZA.addEventListener('click', () => sortSpells('Z-A'));
+
 const isPrepared = (spell) => {
-	return false;
+	return preparedSpells.some((s) => s.index === spell.index);
 };
 
 const createCard = (spell) => {
-	const container = document.getElementById('spells-list');
 	const card = document.createElement('div');
 	card.classList.add('spell-container');
 
@@ -91,16 +94,33 @@ const createCard = (spell) => {
 	}
 
 	<div class="class-name">Druid</div>
-	<button>${isPrepared ? 'Remove' : 'Prepare'}</button>
+	<button>${isPrepared(spell) ? 'Remove' : 'Prepare'}</button>
 `;
-	container.appendChild(card);
+
+	const button = card.querySelector('button');
+	button.addEventListener('click', () => {
+		if (button.innerText === 'Prepare') {
+			allSpells = allSpells.filter((s) => s.index !== spell.index);
+			preparedSpells.push(spell);
+		} else if (button.innerText === 'Remove') {
+			preparedSpells = preparedSpells.filter((s) => s.index !== spell.index);
+			allSpells.push(spell);
+		}
+		renderSpells();
+	});
+
+	return card;
 };
 
 const renderSpells = () => {
-	const container = document.getElementById('spells-list');
-	container.innerHTML = '';
-	allSpells.forEach((spell) => createCard(spell));
-};
+	const spellsContainer = document.getElementById('spells-list');
+	const preparedContainer = document.getElementById('prepared-spells');
 
-buttonAZ.addEventListener('click', sortAZ);
-buttonZA.addEventListener('click', sortZA);
+	spellsContainer.innerHTML = '';
+	preparedContainer.innerHTML = '';
+
+	allSpells.forEach((spell) => spellsContainer.appendChild(createCard(spell)));
+	preparedSpells.forEach((spell) =>
+		preparedContainer.appendChild(createCard(spell))
+	);
+};

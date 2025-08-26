@@ -128,6 +128,15 @@ body {
 	margin: 10px;
 }
 
+#spells-list,
+#prepared-spells {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	justify-items: center;
+	margin: 10px auto;
+}
+
 .spell-list-container,
 .prepared-container {
 	padding: 12px;
@@ -142,7 +151,7 @@ body {
 	background-color: var(--druid-card-border);
 	display: flex;
 	flex-direction: column;
-	padding: 9px 8px;
+	padding: 10px 14px;
 	border-radius: 10px;
 }
 
@@ -230,15 +239,6 @@ button {
 button:hover {
 	background-color: var(--secondary-btn);
 	transform: translateY(-2px);
-}
-
-#spells-list,
-#prepared-spells {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 20px;
-	justify-items: center;
-	margin: 10px auto;
 }
 
 @media (max-width: 1024px) {
