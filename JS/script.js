@@ -1,9 +1,3 @@
-// using the dnd 5e API https://www.dnd5eapi.co/api/2014/
-// spell name, spell lvl
-// casting time, range, components, duration
-// description
-// at higher levels
-
 const baseUrl = 'https://www.dnd5eapi.co';
 let allSpells = [];
 let preparedSpells = [];
