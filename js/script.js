@@ -2,13 +2,18 @@ const baseUrl = 'https://www.dnd5eapi.co';
 let allSpells = [];
 let preparedSpells = [];
 
-const getAllSpells = async () => {
+const setAllCounters = () => {
+	setCounter('main');
+	setCounter('prepared');
+};
+
+const getAllSpells = async (limit) => {
 	try {
 		const spellIndexes = await fetch(
 			baseUrl + '/api/2014/classes/druid/spells'
 		).then((response) => response.json());
 
-		const first40 = spellIndexes.results.slice(0, 40);
+		const first40 = spellIndexes.results.slice(0, limit || 40);
 
 		for (let i = 0; i < first40.length; i++) {
 			await new Promise((resolve) => setTimeout(resolve, 1));
@@ -23,7 +28,20 @@ const getAllSpells = async () => {
 	}
 };
 
-getAllSpells();
+getAllSpells(40).then(() => {
+	setAllCounters();
+});
+
+const setCounters = (container) => {
+	const id = container === 'main' ? 'spells-total' : 'prepared-total';
+	const source = container === 'main' ? allSpells : preparedSpells;
+	const allSpellsCounter = document.getElementById('spells-total');
+	const levelsValue = source.reduce(
+		(acc, spell) => acc + (spell.level || 0),
+		0
+	);
+	allSpellsCounter.innerText = levelsValue;
+};
 
 const buttonAZ = document.getElementById('sort-az');
 const buttonZA = document.getElementById('sort-za');
@@ -35,7 +53,6 @@ const sortSpells = (order = 'A-Z') => {
 		allSpells.sort((a, b) => b.name.localeCompare(a.name));
 	}
 	renderSpells();
-	renderPreparedSpells();
 };
 
 buttonAZ.addEventListener('click', () => sortSpells('A-Z'));
@@ -109,6 +126,8 @@ const createCard = (spell) => {
 const renderSpells = () => {
 	const spellsContainer = document.getElementById('spells-list');
 	const preparedContainer = document.getElementById('prepared-spells');
+
+	setAllCounters();
 
 	spellsContainer.innerHTML = '';
 	preparedContainer.innerHTML = '';
