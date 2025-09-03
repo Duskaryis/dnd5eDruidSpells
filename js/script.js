@@ -23,11 +23,11 @@ const getAllSpells = async (limit) => {
 			baseUrl + '/api/2014/classes/druid/spells'
 		).then((response) => response.json());
 
-		const first40 = spellIndexes.results.slice(0, limit || 40);
+		const spells = spellIndexes.results.slice(0, limit);
 
-		for (let i = 0; i < first40.length; i++) {
+		for (let i = 0; i < spells.length; i++) {
 			await new Promise((resolve) => setTimeout(resolve, 1));
-			const response = await fetch(baseUrl + first40[i].url);
+			const response = await fetch(baseUrl + spells[i].url);
 			const data = await response.json();
 			allSpells.push(data);
 		}
@@ -39,7 +39,7 @@ const getAllSpells = async (limit) => {
 	}
 };
 
-getAllSpells(40).then(() => {
+getAllSpells().then(() => {
 	setAllCounters();
 });
 
