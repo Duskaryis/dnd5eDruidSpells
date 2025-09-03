@@ -7,7 +7,17 @@ const setAllCounters = () => {
 	setCounter('prepared');
 };
 
+const isLoading = (loading) => {
+	const loader = document.getElementById('loader');
+	loader.classList.add('loader');
+	if (loader) {
+		loader.style.display = loading ? 'flex' : 'none';
+	}
+};
+
 const getAllSpells = async (limit) => {
+	isLoading(true);
+
 	try {
 		const spellIndexes = await fetch(
 			baseUrl + '/api/2014/classes/druid/spells'
@@ -21,6 +31,7 @@ const getAllSpells = async (limit) => {
 			const data = await response.json();
 			allSpells.push(data);
 		}
+		isLoading(false);
 		renderSpells();
 	} catch (err) {
 		console.error('Error fetching spells: ', err);
