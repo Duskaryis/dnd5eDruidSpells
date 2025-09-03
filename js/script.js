@@ -32,19 +32,16 @@ getAllSpells(40).then(() => {
 	setAllCounters();
 });
 
-const setCounters = (container) => {
+const setCounter = (container) => {
 	const id = container === 'main' ? 'spells-total' : 'prepared-total';
 	const source = container === 'main' ? allSpells : preparedSpells;
-	const allSpellsCounter = document.getElementById('spells-total');
+	const allSpellsCounter = document.getElementById(id);
 	const levelsValue = source.reduce(
 		(acc, spell) => acc + (spell.level || 0),
 		0
 	);
 	allSpellsCounter.innerText = levelsValue;
 };
-
-const buttonAZ = document.getElementById('sort-az');
-const buttonZA = document.getElementById('sort-za');
 
 const sortSpells = (order = 'A-Z') => {
 	if (order === 'A-Z') {
@@ -55,8 +52,13 @@ const sortSpells = (order = 'A-Z') => {
 	renderSpells();
 };
 
-buttonAZ.addEventListener('click', () => sortSpells('A-Z'));
-buttonZA.addEventListener('click', () => sortSpells('Z-A'));
+const setActionButtons = () => {
+	const buttonAZ = document.getElementById('sort-az');
+	const buttonZA = document.getElementById('sort-za');
+
+	buttonAZ.addEventListener('click', () => sortSpells('A-Z'));
+	buttonZA.addEventListener('click', () => sortSpells('Z-A'));
+};
 
 const isPrepared = (spell) => {
 	return preparedSpells.some((s) => s.index === spell.index);
@@ -128,6 +130,7 @@ const renderSpells = () => {
 	const preparedContainer = document.getElementById('prepared-spells');
 
 	setAllCounters();
+	setActionButtons();
 
 	spellsContainer.innerHTML = '';
 	preparedContainer.innerHTML = '';
