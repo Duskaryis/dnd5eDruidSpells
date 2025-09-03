@@ -24,6 +24,7 @@ const getAllSpells = async (limit) => {
 		).then((response) => response.json());
 
 		const spells = spellIndexes.results.slice(0, limit);
+		// I have switched this so that I can render all of the spells
 
 		for (let i = 0; i < spells.length; i++) {
 			await new Promise((resolve) => setTimeout(resolve, 1));
@@ -39,7 +40,8 @@ const getAllSpells = async (limit) => {
 	}
 };
 
-getAllSpells().then(() => {
+// I limited the amount of cards displayed just for this project, you can remove the 30 to display all spells
+getAllSpells(30).then(() => {
 	setAllCounters();
 });
 
